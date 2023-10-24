@@ -1,6 +1,7 @@
 # app/Dockerfile
 
-FROM 235696014680.dkr.ecr.us-east-1.amazonaws.com/xtb-mo:3.10-slim-buster
+# use the ECR repo base-image link
+FROM [YourAccountID].dkr.ecr.[YourRegion].amazonaws.com/[ECR-repo-base-image]:3.10-slim-buster
 
 WORKDIR /app
 
@@ -16,4 +17,5 @@ EXPOSE 8501
 
 HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
 
-ENTRYPOINT ["streamlit", "run", "trading-xtb-st.py", "--server.port=8501", "--server.address=0.0.0.0"]
+# replace YourWebApp.py with the relevant file name
+ENTRYPOINT ["streamlit", "run", "YourWebApp.py", "--server.port=8501", "--server.address=0.0.0.0"]
